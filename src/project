@@ -1,0 +1,14 @@
+function Project() {
+    const todoList = [];
+
+    const addToDo = (toDo) => {
+        todoList.push(toDo);
+    }
+
+    const getList = () => todoList;
+
+    return { addToDo, getList };
+
+}
+
+export default Project;
