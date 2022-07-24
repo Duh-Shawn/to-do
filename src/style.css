@@ -20,6 +20,8 @@ header{
     display: flex;
     align-items: center;
     padding-left: 25px;
+    padding-right: 25px;
+    justify-content: space-between;
 }
 
 .sidebar{

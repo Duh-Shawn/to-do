@@ -1,17 +1,17 @@
-function ToDo(title, desc, dueDate, priority, notes, checklist) {
+function ToDo(title, desc, dueDate, priority, notes, completed) {
 
     const getTitle = () => title;
-    const getDesc = () => desc;
+    const getDescription = () => desc;
     const getDueDate = () => dueDate;
     const getPriority = () => priority;
     const getNotes = () => notes;
-    const getCheckList = () => checklist;
+    const isCompleted = () => completed;
     
     const setTitle = (val) => {
         title = val;
     }
 
-    const setDesc = (val) => {
+    const setDescription = (val) => {
         desc = val;
     }
 
@@ -27,12 +27,12 @@ function ToDo(title, desc, dueDate, priority, notes, checklist) {
         notes = val;
     }
 
-    const setCheckList = (val) => {
-        checklist = val;
+    const setCompleted = (val) => {
+        completed = val;
     }
     
 
-    return { getTitle, getDesc, getDueDate, getPriority, getNotes, getCheckList, setTitle, setDesc, setDueDate, setPriority, setNotes, setCheckList };
+    return { getTitle, getDescription, getDueDate, getPriority, getNotes, setCompleted, setTitle, setDescription, setDueDate, setPriority, setNotes, isCompleted };
 }
 
 export default ToDo;
