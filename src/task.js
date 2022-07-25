@@ -1,4 +1,4 @@
-function ToDo(title, desc, dueDate, priority, notes, completed) {
+function Task(title, desc, dueDate, priority, notes, completed) {
 
     const getTitle = () => title;
     const getDescription = () => desc;
@@ -35,4 +35,4 @@ function ToDo(title, desc, dueDate, priority, notes, completed) {
     return { getTitle, getDescription, getDueDate, getPriority, getNotes, setCompleted, setTitle, setDescription, setDueDate, setPriority, setNotes, isCompleted };
 }
 
-export default ToDo;
+export default Task;
