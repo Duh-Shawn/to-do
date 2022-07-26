@@ -12,7 +12,7 @@
     <div class="wrapper">
         <header>
             <p>TODO LIST</p>
-            <button class="header-button">New Task</button>
+            <button id="new-task-button" class="header-button">New Task</button>
         </header>
         <div class="sidebar">
             <button class="sidebar-button">Today</button>
@@ -20,5 +20,38 @@
         </div>
         <div class="content">CONTENT</div>
     </div>
+    
+
+    <!-- Modal Section -->
+    <div class="bg-modal">
+        <div class="new-task-popup">
+            <div class="close-popup">+</div>
+            <form id="new-task-form">
+                <input type="text" id="title" placeholder="Title" >
+    
+                <input type="text" id="description" placeholder="Description">
+    
+                <!-- <label for="due">Due Date:</label> -->
+                <input type="date" id="due">
+    
+                <!-- <label for="priority">Priority:</label> -->
+                <select name="priority">
+                    <option value="low">Low</option>
+                    <option value="medium">Medium</option>
+                    <option value="high">High</option>
+                    
+                </select>
+    
+                <textarea placeholder="notes"></textarea>
+    
+                <!-- <label for="completed">Completed</label> -->
+                <input type="checkbox" id="completed">
+
+                <input type="submit" id="form-submission" value="Create New Task">
+
+            </form>
+        </div>
+    </div>
+
 </body>
 </html>
