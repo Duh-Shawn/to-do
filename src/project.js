@@ -7,9 +7,9 @@ function Project() {
         todoList.push(toDo);
     }
 
-    const getList = () => todoList;
+    const getToDoList = () => todoList;
 
-    return { addToList, getList };
+    return { getToDoList, addToList};
 
 }
 
