@@ -33,6 +33,10 @@ header{
     gap: 10px;
 }
 
+.content {
+    padding: 25px;
+}
+
 .new-task-popup{
     position:absolute;
     top:50%;
@@ -79,4 +83,10 @@ header{
     font-size: 25px;
     transform: rotate(45deg);
     cursor: pointer;
+}
+
+.task{
+    display: flex;
+    justify-content: space-between;
+    /* border: solid; */
 }
