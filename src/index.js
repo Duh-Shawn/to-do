@@ -2,6 +2,7 @@ import { UI } from "./ui";
 import { Project } from "./project";
 import { Task } from "./task";
 import { Controller } from "./controller";
+import { Events } from "./events";
 
 // UI.initEventListeners();
 const defaultProject = new Project("Default");
@@ -9,8 +10,8 @@ const projectList = [];
 projectList.push(defaultProject);
 let selectedProject = defaultProject;
 const controller = new Controller(projectList, selectedProject);
-const ui = new UI(controller);
-ui.initEventListeners();
+const events = new Events(controller);
+events.init();
 
 
 // const task1 = new Task("title", "description", "12/08/1996", "low");

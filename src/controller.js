@@ -1,24 +1,19 @@
 import { UI } from "./ui";
 import { Task } from "./task";
+import { Events } from "./events";
 
 class Controller {
     constructor (projectList, selectedProject){
         this.projectList = projectList;
         this.selectedProject = selectedProject;
+        this.events = new Events(this);
     }
 
     deleteTask = (e) => {
         const taskIndex = e.target.parentNode.dataset.indexNumber;
         this.selectedProject.removeTask(taskIndex);
         UI.displayProjectTasks(this.selectedProject);
-        this.attachRemoveEvents();
-    }
-
-    attachRemoveEvents = () => {
-        const removeTaskButtonList = document.querySelectorAll('.remove-task');
-        removeTaskButtonList.forEach(removeButton => {
-            removeButton.addEventListener('click', this.deleteTask);
-        })
+        this.events.initRemoveTaskListener();
     }
     
     createTask = (e) => {
@@ -30,12 +25,8 @@ class Controller {
         const task = new Task(title, description, dueDate, priority);
         this.selectedProject.addTask(task);
         UI.displayProjectTasks(this.selectedProject);
-        this.attachRemoveEvents();
+        this.events.initRemoveTaskListener();
     }
-
-    
-
-    
 
 }
 

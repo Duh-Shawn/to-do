@@ -1,10 +1,4 @@
-// import { Controller } from "./controller";
-
 class UI {
-
-    constructor(controller){
-        this.controller = controller;
-    }
 
     static removeTask(e){
         e.target.parentNode.remove();
@@ -29,29 +23,12 @@ class UI {
         console.log(document.querySelector('.project-data'));
     }
 
-    openTaskForm = () => {
+    static openTaskForm = () => {
         document.querySelector('.bg-modal').style.display = 'flex';
-        console.log(this.controller.projectList);
     }
 
-    closeTaskForm = () => {
+    static closeTaskForm = () => {
         document.querySelector('.bg-modal').style.display = 'none';
-    }
-
-
-    initEventListeners(){
-
-        const newTaskButton = document.getElementById('new-task-button');
-        newTaskButton.addEventListener('click', this.openTaskForm);
-
-        const closeFormButton = document.querySelector('.close-popup');
-        closeFormButton.addEventListener('click', this.closeTaskForm);
-
-        const createTaskButton = document.getElementById('form-submission');
-        createTaskButton.addEventListener('click', this.controller.createTask);
-
-
-
     }
 }
 
