@@ -5,10 +5,22 @@ class Controller {
     constructor (projectList, selectedProject){
         this.projectList = projectList;
         this.selectedProject = selectedProject;
-        this.createNewTaskButton = document.getElementById('form-submission');
-        this.createNewTaskButton.addEventListener('click', this.createTask);
     }
 
+    deleteTask = (e) => {
+        const taskIndex = e.target.parentNode.dataset.indexNumber;
+        this.selectedProject.removeTask(taskIndex);
+        UI.displayProjectTasks(this.selectedProject);
+        this.attachRemoveEvents();
+    }
+
+    attachRemoveEvents = () => {
+        const removeTaskButtonList = document.querySelectorAll('.remove-task');
+        removeTaskButtonList.forEach(removeButton => {
+            removeButton.addEventListener('click', this.deleteTask);
+        })
+    }
+    
     createTask = (e) => {
         e.preventDefault();
         const title = document.getElementById('title').value;
@@ -18,7 +30,10 @@ class Controller {
         const task = new Task(title, description, dueDate, priority);
         this.selectedProject.addTask(task);
         UI.displayProjectTasks(this.selectedProject);
+        this.attachRemoveEvents();
     }
+
+    
 
     
 

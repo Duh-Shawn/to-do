@@ -3,12 +3,14 @@ import { Project } from "./project";
 import { Task } from "./task";
 import { Controller } from "./controller";
 
-UI.initEventListeners();
+// UI.initEventListeners();
 const defaultProject = new Project("Default");
 const projectList = [];
 projectList.push(defaultProject);
 let selectedProject = defaultProject;
 const controller = new Controller(projectList, selectedProject);
+const ui = new UI(controller);
+ui.initEventListeners();
 
 
 // const task1 = new Task("title", "description", "12/08/1996", "low");
