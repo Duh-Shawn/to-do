@@ -98,7 +98,31 @@ header{
 .task{
     display: flex;
     justify-content: space-between;
-    /* border: solid; */
+    align-items: center;
+}
+
+.project{
+    display: flex;
+    justify-content: space-between;
+    padding-left: 25px;
+    padding-right: 25px;
+    align-items: center;
+}
+
+.remove-project,
+.remove-task{
+    transform: rotate(45deg);
+    font-size: 25px;
+    cursor: pointer;
+}
+
+
+.new-task-button,
+#new-project-button{
+    cursor: pointer;
+    background-color: white;
+    border: none;
+    font-size: 30px;
 }
 
 .sidebar-projects{

@@ -7,9 +7,11 @@ class Events{
     }
 
     init(){
-        const newTaskButton = document.getElementById('new-task-button');
-        newTaskButton.addEventListener('click', UI.openTaskForm);
-
+        const newTaskButtonList = document.querySelectorAll('.new-task-button');
+        newTaskButtonList.forEach(newTaskButton => {
+            newTaskButton.addEventListener('click', UI.openTaskForm);
+        });
+        
         const newProjectButton = document.getElementById('new-project-button');
         newProjectButton.addEventListener('click', UI.openProjectForm);
     
@@ -27,9 +29,16 @@ class Events{
     }
 
     initRemoveTaskListener(){
-        const removeTaskButtonList = document.querySelectorAll('.remove-task');
-        removeTaskButtonList.forEach(removeButton => {
+        const removeButtonList = document.querySelectorAll('.remove-task');
+        removeButtonList.forEach(removeButton => {
             removeButton.addEventListener('click', this.controller.deleteTask);
+        });
+    }
+
+    initRemoveProjectListener(){
+        const removeButtonList = document.querySelectorAll('.remove-project');
+        removeButtonList.forEach(removeButton => {
+            removeButton.addEventListener('click', this.controller.deleteProject);
         });
     }
 }

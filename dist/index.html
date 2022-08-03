@@ -12,7 +12,7 @@
     <div class="wrapper">
         <header>
             <p>TODO LIST</p>
-            <button id="new-task-button" class="header-button">New Task</button>
+            <button class="new-task-button header-button">+</button>
         </header>
         <div class="sidebar">
             <button class="sidebar-button">Default</button>
@@ -24,6 +24,7 @@
         </div>
         <div class="content">
             <h1></h1>
+            <button class="new-task-button header-button">+</button>
             <div class="project-data"></div>
         </div>
     </div>
@@ -34,12 +35,12 @@
         <div class="new-task-popup">
             <div class="close-popup">+</div>
             <form action="" id="new-task-form" >
-                <input type="text" id="title" placeholder="Title" >
+                <input type="text" id="title" placeholder="Title" value="Title" >
     
-                <input type="text" id="description" placeholder="Description">
+                <input type="text" id="description" placeholder="Description" value="Description">
     
                 <!-- <label for="due">Due Date:</label> -->
-                <input type="date" id="due">
+                <input type="date" id="due" value="1212-12-12">
     
                 <!-- <label for="priority">Priority:</label> -->
                 <select id="priority" name="priority">
@@ -49,7 +50,7 @@
                     
                 </select>
     
-                <textarea id="notes" placeholder="notes"></textarea>
+                <textarea id="notes" placeholder="notes">NOTES</textarea>
     
                 <!-- <label for="completed">Completed</label> -->
                 <input type="checkbox" id="completed">
@@ -64,7 +65,7 @@
         <div class="new-project-popup">
             <div class="close-popup">+</div>
             <form action="" id="new-project-form" >
-                <input type="text" id="name" placeholder="Name" >
+                <input type="text" id="name" placeholder="Name" Value="Sample " >
                 <input type="submit" id="project-form-submission" value="Create New Project">
 
                 <!-- <input type="button" id="form-submission" value="Create New Task"> -->

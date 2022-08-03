@@ -10,13 +10,34 @@ class Controller {
         this.events = new Events(this);
     }
 
-    deleteTask = (e) => {
-        const taskIndex = e.target.parentNode.dataset.indexNumber;
-        this.selectedProject.removeTask(taskIndex);
-        UI.displayProjectTasks(this.selectedProject);
-        this.events.initRemoveTaskListener();
+    removeProjectFromList(index){
+        this.projectList.splice(index, 1);
     }
-    
+
+    createProject = (e) => {
+        e.preventDefault();
+        const name = document.getElementById('name').value;
+        this.projectList.push(new Project(name));
+        UI.displayProjectList(this.projectList);
+        this.events.initRemoveProjectListener()
+        /* const description = document.getElementById('description').value;
+        const dueDate = document.getElementById('due').value;
+        const priority = document.getElementById('priority').value; 
+        const task = new Task(title, description, dueDate, priority);
+        this.selectedProject.addTask(task);
+        UI.displayProjectTasks(this.selectedProject);
+        this.events.initRemoveTaskListener(); */
+        
+    }
+
+    deleteProject = (e) => {
+        const projectIndex = e.target.parentNode.dataset.indexNumber;
+        this.removeProjectFromList(projectIndex);
+        UI.displayProjectList(this.projectList);
+        this.events.initRemoveProjectListener()
+        console.log(this.projectList);
+    }
+
     createTask = (e) => {
         e.preventDefault();
         const title = document.getElementById('title').value;
@@ -29,19 +50,16 @@ class Controller {
         this.events.initRemoveTaskListener();
     }
 
-    createProject = (e) => {
-        e.preventDefault();
-        const name = document.getElementById('name').value;
-        this.projectList.push(new Project(name));
-        UI.displayProjectList(this.projectList);
-        /* const description = document.getElementById('description').value;
-        const dueDate = document.getElementById('due').value;
-        const priority = document.getElementById('priority').value; 
-        const task = new Task(title, description, dueDate, priority);
-        this.selectedProject.addTask(task);
+    deleteTask = (e) => {
+        const taskIndex = e.target.parentNode.dataset.indexNumber;
+        this.selectedProject.removeTask(taskIndex);
         UI.displayProjectTasks(this.selectedProject);
-        this.events.initRemoveTaskListener(); */
+        this.events.initRemoveTaskListener();
     }
+    
+    
+
+    
 
 }
 
