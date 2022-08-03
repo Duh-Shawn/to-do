@@ -41,6 +41,14 @@ class Events{
             removeButton.addEventListener('click', this.controller.deleteProject);
         });
     }
+
+    initProjectSelectionListener(){
+        const projectNameList = document.querySelectorAll('.project-name');
+        projectNameList.forEach(projectName => {
+            projectName.addEventListener('click', this.controller.setSelectedProject);
+        });
+    }
+
 }
 
 export { Events };

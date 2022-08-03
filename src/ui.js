@@ -35,7 +35,6 @@ class UI {
             taskDiv.innerHTML=`<p class="task-title">${project.taskList[i].title}</p><p class="task-description">${project.taskList[i].description}</p><p class="task-due">${project.taskList[i].dueDate}</p><p class="task-priority">${project.taskList[i].priority}</p><div class="remove-task">+</div>`
             document.querySelector('.project-data').appendChild(taskDiv);
         }
-        console.log(document.querySelector('.project-data'));
     }
 
     static openTaskForm = () => {
