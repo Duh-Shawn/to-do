@@ -7,13 +7,21 @@ class Controller {
     constructor (projectList, selectedProject){
         this.projectList = projectList;
         this.selectedProject = selectedProject;
-        this.events = new Events(this);
+        this.ui = new UI(this);
+    }
+
+    //Project logic
+    createProject = (e) => {
+        e.preventDefault();
+        const name = document.getElementById('name').value;
+        this.projectList.push(new Project(name));
+        this.ui.displayProjectList(this.projectList);
     }
 
     setSelectedProject = (e) => {
         const projectIndex = e.target.parentNode.dataset.indexNumber;
         this.selectedProject = this.projectList[projectIndex];
-        UI.displayProjectTasks(this.selectedProject);
+        this.ui.displayProjectTasks(this.selectedProject);
         console.log(this.selectedProject);
     }
 
@@ -21,31 +29,13 @@ class Controller {
         this.projectList.splice(index, 1);
     }
 
-    createProject = (e) => {
-        e.preventDefault();
-        const name = document.getElementById('name').value;
-        this.projectList.push(new Project(name));
-        UI.displayProjectList(this.projectList);
-        this.events.initRemoveProjectListener();
-        this.events.initProjectSelectionListener();
-        /* const description = document.getElementById('description').value;
-        const dueDate = document.getElementById('due').value;
-        const priority = document.getElementById('priority').value; 
-        const task = new Task(title, description, dueDate, priority);
-        this.selectedProject.addTask(task);
-        UI.displayProjectTasks(this.selectedProject);
-        this.events.initRemoveTaskListener(); */
-        
-    }
-
     deleteProject = (e) => {
         const projectIndex = e.target.parentNode.dataset.indexNumber;
         this.removeProjectFromList(projectIndex);
-        UI.displayProjectList(this.projectList);
-        this.events.initRemoveProjectListener()
-        this.events.initProjectSelectionListener();
+        this.ui.displayProjectList(this.projectList);
     }
 
+    //Task logic
     createTask = (e) => {
         e.preventDefault();
         const title = document.getElementById('title').value;
@@ -54,20 +44,15 @@ class Controller {
         const priority = document.getElementById('priority').value; 
         const task = new Task(title, description, dueDate, priority);
         this.selectedProject.addTask(task);
-        UI.displayProjectTasks(this.selectedProject);
-        this.events.initRemoveTaskListener();
+        this.ui.displayProjectTasks(this.selectedProject);
     }
 
     deleteTask = (e) => {
         const taskIndex = e.target.parentNode.dataset.indexNumber;
         this.selectedProject.removeTask(taskIndex);
-        UI.displayProjectTasks(this.selectedProject);
-        this.events.initRemoveTaskListener();
+        this.ui.displayProjectTasks(this.selectedProject);
     }
-    
-    
 
-    
 
 }
 

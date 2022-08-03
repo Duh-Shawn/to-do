@@ -28,25 +28,13 @@ class Events{
         
     }
 
-    initRemoveTaskListener(){
-        const removeButtonList = document.querySelectorAll('.remove-task');
-        removeButtonList.forEach(removeButton => {
-            removeButton.addEventListener('click', this.controller.deleteTask);
-        });
+    initTask(taskDiv){
+        taskDiv.querySelector('.remove-task').addEventListener('click', this.controller.deleteTask);
     }
 
-    initRemoveProjectListener(){
-        const removeButtonList = document.querySelectorAll('.remove-project');
-        removeButtonList.forEach(removeButton => {
-            removeButton.addEventListener('click', this.controller.deleteProject);
-        });
-    }
-
-    initProjectSelectionListener(){
-        const projectNameList = document.querySelectorAll('.project-name');
-        projectNameList.forEach(projectName => {
-            projectName.addEventListener('click', this.controller.setSelectedProject);
-        });
+    initProject(projectDiv){
+        projectDiv.querySelector('.remove-project').addEventListener('click', this.controller.deleteProject);
+        projectDiv.querySelector('.project-name').addEventListener('click', this.controller.setSelectedProject);
     }
 
 }

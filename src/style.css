@@ -131,3 +131,7 @@ header{
     padding-left: 25px;
     padding-right: 25px;
 }
+
+.project-name{
+    cursor: pointer;      
+}

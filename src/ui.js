@@ -1,30 +1,39 @@
+import { Events } from "./events";
+
 class UI {
+
+    constructor(controller){
+        this.controller = controller;
+        this.events = new Events(controller);
+    }
 
     static removeTask(e){
         e.target.parentNode.remove();
     }
 
 
-    static displayProjectList = (projectList) => {
+    displayProjectList = (projectList) => {
         this.clearProjectContainer();
         for (let i = 0; i < projectList.length; i++){
             const projectDiv = document.createElement('div');
             projectDiv.classList = "project";
             projectDiv.dataset.indexNumber = i;
             projectDiv.innerHTML=`<p class="project-name">${projectList[i].name}</p><div class="remove-project">+</div>`
+            
+            this.events.initProject(projectDiv); //attach events to project
             document.querySelector('.projects-container').appendChild(projectDiv);
         }
     }
     
-    static clearProjectContainer = () => {
+    clearProjectContainer = () => {
         document.querySelector('.projects-container').innerHTML = "";
     }
 
-    static clearProjectContent = () => {
+    clearProjectContent = () => {
         document.querySelector('.project-data').innerHTML = "";
     }
 
-    static displayProjectTasks = (project) => {
+    displayProjectTasks = (project) => {
         const heading = document.querySelector('.content h1');
         heading.textContent = project.name;
         this.clearProjectContent();
@@ -33,6 +42,8 @@ class UI {
             taskDiv.classList = "task";
             taskDiv.dataset.indexNumber = i;
             taskDiv.innerHTML=`<p class="task-title">${project.taskList[i].title}</p><p class="task-description">${project.taskList[i].description}</p><p class="task-due">${project.taskList[i].dueDate}</p><p class="task-priority">${project.taskList[i].priority}</p><div class="remove-task">+</div>`
+            
+            this.events.initTask(taskDiv); //attach events to task
             document.querySelector('.project-data').appendChild(taskDiv);
         }
     }
