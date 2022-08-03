@@ -16,7 +16,11 @@
         </header>
         <div class="sidebar">
             <button class="sidebar-button">Default</button>
-            <button class="sidebar-button">Projects</button>
+            <div class="sidebar-projects">
+                <div>Projects</div>
+                <button id="new-project-button">+</button>
+            </div>
+            <div class="projects-container"></div>
         </div>
         <div class="content">
             <h1></h1>
@@ -50,12 +54,24 @@
                 <!-- <label for="completed">Completed</label> -->
                 <input type="checkbox" id="completed">
 
-                <input type="submit" id="form-submission" value="Create New Task">
+                <input type="submit" id="task-form-submission" value="Create New Task">
 
                 <!-- <input type="button" id="form-submission" value="Create New Task"> -->
 
             </form>
         </div>
+
+        <div class="new-project-popup">
+            <div class="close-popup">+</div>
+            <form action="" id="new-project-form" >
+                <input type="text" id="name" placeholder="Name" >
+                <input type="submit" id="project-form-submission" value="Create New Project">
+
+                <!-- <input type="button" id="form-submission" value="Create New Task"> -->
+
+            </form>
+        </div>
+
     </div>
 
 </body>

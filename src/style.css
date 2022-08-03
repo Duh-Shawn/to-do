@@ -58,8 +58,10 @@ header{
     align-items: center;
 }
 
-.new-task-popup{
-    display: flex;
+.new-task-popup,
+.new-project-popup{
+    display: none;
+    flex-direction: column;
     max-width: 500px;
     max-height: 500px;
     background-color: white;
@@ -76,11 +78,19 @@ header{
     gap: 10px;
 }
 
+#new-project-form{
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
 .close-popup{
-    position: absolute;
-    top: 0;
-    right: 14px;
+    position: relative;
     font-size: 25px;
+    top: -20px;
+    right: 0px;
+    align-self: flex-end;
     transform: rotate(45deg);
     cursor: pointer;
 }
@@ -89,4 +99,11 @@ header{
     display: flex;
     justify-content: space-between;
     /* border: solid; */
+}
+
+.sidebar-projects{
+    display: flex;
+    justify-content: space-between;
+    padding-left: 25px;
+    padding-right: 25px;
 }

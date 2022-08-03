@@ -3,7 +3,22 @@ class UI {
     static removeTask(e){
         e.target.parentNode.remove();
     }
+
+
+    static displayProjectList = (projectList) => {
+        this.clearProjectContainer();
+        for (let i = 0; i < projectList.length; i++){
+            const projectDiv = document.createElement('div');
+            projectDiv.classList = "project";
+            projectDiv.dataset.indexNumber = i;
+            projectDiv.innerHTML=`<p class="project-name">${projectList[i].name}</p>`
+            document.querySelector('.projects-container').appendChild(projectDiv);
+        }
+    }
     
+    static clearProjectContainer = () => {
+        document.querySelector('.projects-container').innerHTML = "";
+    }
 
     static clearProjectContent = () => {
         document.querySelector('.project-data').innerHTML = "";
@@ -25,10 +40,17 @@ class UI {
 
     static openTaskForm = () => {
         document.querySelector('.bg-modal').style.display = 'flex';
+        document.querySelector('.new-task-popup').style.display = 'flex';
     }
 
-    static closeTaskForm = () => {
+    static closeForm = (e) => {
         document.querySelector('.bg-modal').style.display = 'none';
+        e.target.parentNode.style.display = 'none';
+    }
+
+    static openProjectForm = () => {
+        document.querySelector('.bg-modal').style.display = 'flex';
+        document.querySelector('.new-project-popup').style.display = 'flex';
     }
 }
 

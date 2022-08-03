@@ -1,6 +1,7 @@
 import { UI } from "./ui";
 import { Task } from "./task";
 import { Events } from "./events";
+import { Project } from "./project";
 
 class Controller {
     constructor (projectList, selectedProject){
@@ -26,6 +27,20 @@ class Controller {
         this.selectedProject.addTask(task);
         UI.displayProjectTasks(this.selectedProject);
         this.events.initRemoveTaskListener();
+    }
+
+    createProject = (e) => {
+        e.preventDefault();
+        const name = document.getElementById('name').value;
+        this.projectList.push(new Project(name));
+        UI.displayProjectList(this.projectList);
+        /* const description = document.getElementById('description').value;
+        const dueDate = document.getElementById('due').value;
+        const priority = document.getElementById('priority').value; 
+        const task = new Task(title, description, dueDate, priority);
+        this.selectedProject.addTask(task);
+        UI.displayProjectTasks(this.selectedProject);
+        this.events.initRemoveTaskListener(); */
     }
 
 }

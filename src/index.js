@@ -4,7 +4,6 @@ import { Task } from "./task";
 import { Controller } from "./controller";
 import { Events } from "./events";
 
-// UI.initEventListeners();
 const defaultProject = new Project("Default");
 const projectList = [];
 projectList.push(defaultProject);
@@ -25,3 +24,5 @@ events.init();
 
 
 UI.displayProjectTasks(selectedProject);
+UI.displayProjectList(projectList);
+   
