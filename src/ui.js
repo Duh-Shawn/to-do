@@ -7,11 +7,6 @@ class UI {
         this.events = new Events(controller);
     }
 
-    static removeTask(e){
-        e.target.parentNode.remove();
-    }
-
-
     displayProjectList = (projectList) => {
         this.clearProjectContainer();
         for (let i = 0; i < projectList.length; i++){
@@ -31,6 +26,11 @@ class UI {
 
     clearProjectContent = () => {
         document.querySelector('.project-data').innerHTML = "";
+    }
+
+    contentDeletedDisplay = () => {
+        document.querySelector('.content h1').innerHTML = "Project has successfully been deleted";
+        document.querySelector('.project-data').innerHTML = " This project has been deleted please select a new one";
     }
 
     displayProjectTasks = (project) => {
