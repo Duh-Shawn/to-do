@@ -28,7 +28,6 @@ class Controller {
     }
 
     removeProjectFromList = (index) => {
-        /* if (this.projectList[index] === this.selectedProject) location.reload();  */
         this.projectList.splice(index, 1);
         localStorage.setItem('projectList', JSON.stringify(this.projectList));
     }
