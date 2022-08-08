@@ -18,7 +18,7 @@ class Local{
         const jsonTaskList = jsonProject.taskList;
         const project = new Project(jsonProject.name);
         jsonTaskList.forEach(jsonTask => {
-                const task = new Task(jsonTask.title, jsonTask.description, jsonTask.dueDate, jsonTask.priority);
+                const task = new Task(jsonTask.title, jsonTask.description, jsonTask.dueDate, jsonTask.priority, jsonTask.isCompleted);
                 project.addTask(task);
         });
         return project;

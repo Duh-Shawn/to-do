@@ -13,8 +13,6 @@ class Project{
         this.id = Project.id;
     }
 
-    
-
     addTask(task) {
         this.taskList.push(task);
     }

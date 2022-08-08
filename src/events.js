@@ -30,6 +30,7 @@ class Events{
 
     initTask(taskDiv){
         taskDiv.querySelector('.remove-task').addEventListener('click', this.controller.deleteTask);
+        taskDiv.querySelector('.task-left').querySelector('.task-completed-checkbox').addEventListener('click', this.controller.markTaskCompleted);
     }
 
     initProject(projectDiv){

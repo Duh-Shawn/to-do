@@ -10,21 +10,22 @@ class Controller {
         this.ui = new UI(this);
     }
 
+    
+
     //Project logic
     createProject = (e) => {
         e.preventDefault();
         const name = document.getElementById('name').value;
         this.projectList.push(new Project(name));
-        localStorage.setItem('projectList', JSON.stringify(this.projectList));
         this.ui.displayProjectList(this.projectList);
+        localStorage.setItem('projectList', JSON.stringify(this.projectList));
     }
 
     setSelectedProject = (e) => {
         const projectIndex = e.target.parentNode.dataset.indexNumber;
         this.selectedProject = this.projectList[projectIndex];
-        localStorage.setItem('selectedProject', JSON.stringify(this.selectedProject));
-
         this.ui.displayProjectTasks(this.selectedProject);
+        localStorage.setItem('selectedProject', JSON.stringify(this.selectedProject));
     }
 
     removeProjectFromList = (index) => {
@@ -35,9 +36,9 @@ class Controller {
     deleteProject = (e) => {
         const projectIndex = e.target.parentNode.dataset.indexNumber;
         this.removeProjectFromList(projectIndex);
-        localStorage.setItem('projectList', JSON.stringify(this.projectList));
         this.ui.displayProjectList(this.projectList);
         this.ui.contentDeletedDisplay();
+        localStorage.setItem('projectList', JSON.stringify(this.projectList));
     }
 
     //Task logic
@@ -47,19 +48,37 @@ class Controller {
         const description = document.getElementById('description').value;
         const dueDate = document.getElementById('due').value;
         const priority = document.getElementById('priority').value; 
-        const task = new Task(title, description, dueDate, priority);
+        const task = new Task(title, description, dueDate, priority, false);
         this.selectedProject.addTask(task);
+        this.ui.displayProjectTasks(this.selectedProject);
         localStorage.setItem('selectedProject', JSON.stringify(this.selectedProject));
         localStorage.setItem('projectList', JSON.stringify(this.projectList));
-        this.ui.displayProjectTasks(this.selectedProject);
+        
     }
 
     deleteTask = (e) => {
         const taskIndex = e.target.parentNode.dataset.indexNumber;
         this.selectedProject.removeTask(taskIndex);
+        this.ui.displayProjectTasks(this.selectedProject);
         localStorage.setItem('selectedProject', JSON.stringify(this.selectedProject));
         localStorage.setItem('projectList', JSON.stringify(this.projectList));
-        this.ui.displayProjectTasks(this.selectedProject);
+        
+    }
+
+    markTaskCompleted = (e) => {
+        if (e.target.checked){
+            const taskIndex = e.target.parentNode.parentNode.dataset.indexNumber;
+            const task = this.selectedProject.taskList[taskIndex];
+            task.markComplete();
+        }
+        else{
+            const taskIndex = e.target.parentNode.parentNode.dataset.indexNumber;
+            const task = this.selectedProject.taskList[taskIndex];
+            task.markIncomplete();
+            
+        }
+        localStorage.setItem('selectedProject', JSON.stringify(this.selectedProject));
+        localStorage.setItem('projectList', JSON.stringify(this.projectList));
     }
 
 

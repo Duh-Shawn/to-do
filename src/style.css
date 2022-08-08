@@ -34,7 +34,14 @@ header{
 }
 
 .content {
-    padding: 25px;
+    padding-top: 25px;
+    padding-left: 75px;
+    padding-right: 75px;
+    padding-bottom: 25px;
+}
+
+.content h1 {
+    margin: 0;
 }
 
 .new-task-popup{
@@ -101,6 +108,13 @@ header{
     align-items: center;
 }
 
+.task-left,
+.task-right{
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
 .project{
     display: flex;
     justify-content: space-between;
@@ -123,6 +137,11 @@ header{
     background-color: white;
     border: none;
     font-size: 30px;
+}
+
+.new-task-button{
+    margin-top: 25px;
+    margin-bottom: 25px;
 }
 
 .sidebar-projects{

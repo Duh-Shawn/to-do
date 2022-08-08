@@ -38,10 +38,14 @@ class UI {
         heading.textContent = project.name;
         this.clearProjectContent();
         for (let i = 0; i < project.taskList.length; i++){
+            const task = project.taskList[i];
             const taskDiv = document.createElement('div');
             taskDiv.classList = "task";
             taskDiv.dataset.indexNumber = i;
-            taskDiv.innerHTML=`<p class="task-title">${project.taskList[i].title}</p><p class="task-description">${project.taskList[i].description}</p><p class="task-due">${project.taskList[i].dueDate}</p><p class="task-priority">${project.taskList[i].priority}</p><div class="remove-task">+</div>`
+            taskDiv.innerHTML=`<div class="task-left"><input class="task-completed-checkbox" type="checkbox"><p class="task-title">${task.title}</p></div><div class="task-right"><p class="task-due">${task.dueDate}<div class="remove-task">+</div></div>`;
+            if (task.isCompleted === true){
+                taskDiv.querySelector('.task-left').querySelector('.task-completed-checkbox').checked = true;
+            }
             this.events.initTask(taskDiv); //attach events to task
             document.querySelector('.project-data').appendChild(taskDiv);
         }
