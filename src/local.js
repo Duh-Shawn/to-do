@@ -50,17 +50,25 @@ class Local{
             //projects are saved locally
             else{ 
                 const localSelectedProject = JSON.parse(localStorage.getItem('selectedProject'));
+                console.log(localSelectedProject);
                 let foundSelectedProject = false;
-                if (this.localListContainsSelectedProject()){
-                    selectedProject = this.convertJsonToProject(localSelectedProject);
-                    foundSelectedProject = true;
-                }
                 localProjectList.forEach(jsonProject => {
-                    const project = this.convertJsonToProject(jsonProject);
-                    projectList.push(project);
+                     //check if current json item is our previously selected project
+                    if (jsonProject.id === localSelectedProject.id){
+                        const project = this.convertJsonToProject(jsonProject); //project needs to be created here to keep ID accurate.
+                        selectedProject = project;
+                        projectList.push(selectedProject);
+                        foundSelectedProject = true;
+                    }
+                    else{
+                        const project = this.convertJsonToProject(jsonProject);
+                        projectList.push(project);
+                    }
+                    
                 });
                 if (!foundSelectedProject){
                     selectedProject = projectList[0];
+                    localStorage.setItem('selectedProject', JSON.stringify(selectedProject));
                 }
             }
         }

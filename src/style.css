@@ -142,11 +142,13 @@ header{
 .new-task-button{
     margin-top: 25px;
     margin-bottom: 25px;
+    padding: 0;
 }
 
 .sidebar-projects{
     display: flex;
     justify-content: space-between;
+    align-items: center;
     padding-left: 25px;
     padding-right: 25px;
 }

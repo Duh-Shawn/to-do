@@ -35,9 +35,9 @@ class Controller {
 
     deleteProject = (e) => {
         const projectIndex = e.target.parentNode.dataset.indexNumber;
+        if(this.projectList[projectIndex] === this.selectedProject) this.ui.contentDeletedDisplay();
         this.removeProjectFromList(projectIndex);
         this.ui.displayProjectList(this.projectList);
-        this.ui.contentDeletedDisplay();
         localStorage.setItem('projectList', JSON.stringify(this.projectList));
     }
 
@@ -50,19 +50,17 @@ class Controller {
         const priority = document.getElementById('priority').value; 
         const task = new Task(title, description, dueDate, priority, false);
         this.selectedProject.addTask(task);
-        this.ui.displayProjectTasks(this.selectedProject);
         localStorage.setItem('selectedProject', JSON.stringify(this.selectedProject));
         localStorage.setItem('projectList', JSON.stringify(this.projectList));
-        
+        this.ui.displayProjectTasks(this.selectedProject);
     }
 
     deleteTask = (e) => {
         const taskIndex = e.target.parentNode.dataset.indexNumber;
         this.selectedProject.removeTask(taskIndex);
-        this.ui.displayProjectTasks(this.selectedProject);
         localStorage.setItem('selectedProject', JSON.stringify(this.selectedProject));
         localStorage.setItem('projectList', JSON.stringify(this.projectList));
-        
+        this.ui.displayProjectTasks(this.selectedProject); 
     }
 
     markTaskCompleted = (e) => {
@@ -75,7 +73,6 @@ class Controller {
             const taskIndex = e.target.parentNode.parentNode.dataset.indexNumber;
             const task = this.selectedProject.taskList[taskIndex];
             task.markIncomplete();
-            
         }
         localStorage.setItem('selectedProject', JSON.stringify(this.selectedProject));
         localStorage.setItem('projectList', JSON.stringify(this.projectList));
