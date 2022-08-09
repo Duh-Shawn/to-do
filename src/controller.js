@@ -56,8 +56,10 @@ class Controller {
     }
 
     deleteTask = (e) => {
-        const taskIndex = e.target.parentNode.dataset.indexNumber;
+        const taskIndex = e.target.parentNode.parentNode.dataset.indexNumber;
+        console.log(this.selectedProject);
         this.selectedProject.removeTask(taskIndex);
+        console.log(this.selectedProject);
         localStorage.setItem('selectedProject', JSON.stringify(this.selectedProject));
         localStorage.setItem('projectList', JSON.stringify(this.projectList));
         this.ui.displayProjectTasks(this.selectedProject); 
