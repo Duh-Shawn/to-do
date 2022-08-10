@@ -21,7 +21,7 @@ class UI {
         <span>Title: </span> <span>${task.title}</span>
     </div>
     <div class="task-info-project">
-        <span>Project: </span> <span><${project.name}/span>
+        <span>Project: </span> <span>${project.name}</span>
     </div>
     <div class="task-info-date">
         <span>Due Date: </span> <span>${task.dueDate}</span>
@@ -90,6 +90,16 @@ class UI {
     static closeForm = (e) => {
         document.querySelector('.bg-modal').style.display = 'none';
         e.target.parentNode.style.display = 'none';
+    }
+
+    static closeTaskPopUp = (e) => {
+        document.querySelector('.bg-modal').style.display = 'none';
+        document.querySelector('.new-task-popup').style.display = 'none';
+    }
+
+    static closeProjectPopUp = (e) => {
+        document.querySelector('.bg-modal').style.display = 'none';
+        document.querySelector('.new-project-popup').style.display = 'none';
     }
 
     static openProjectForm = () => {

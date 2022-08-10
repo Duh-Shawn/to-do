@@ -21,10 +21,16 @@ class Events{
         });
         
         const createTaskButton = document.getElementById('task-form-submission');
-        createTaskButton.addEventListener('click', this.controller.createTask);
+        createTaskButton.addEventListener('click', (e) => {
+            this.controller.createTask(e);
+            UI.closeTaskPopUp();
+        });
 
         const createProjectButton = document.getElementById('project-form-submission');
-        createProjectButton.addEventListener('click', this.controller.createProject);
+        createProjectButton.addEventListener('click', (e) => {
+            this.controller.createProject(e);
+            UI.closeProjectPopUp();
+        });
         
     }
 
@@ -39,7 +45,6 @@ class Events{
         projectDiv.querySelector('.project-name').addEventListener('click', this.controller.setSelectedProject);
     }
     initCloseInfoPopupButton(taskInfoPopup){
-        console.log(taskInfoPopup);
         taskInfoPopup.querySelector('.close-info-popup').addEventListener('click', UI.closeTaskInfo);
     }
 

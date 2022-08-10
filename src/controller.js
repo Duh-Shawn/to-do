@@ -19,6 +19,7 @@ class Controller {
         this.projectList.push(new Project(name));
         this.ui.displayProjectList(this.projectList);
         localStorage.setItem('projectList', JSON.stringify(this.projectList));
+        UI.closeProjectPopUp();
     }
 
     setSelectedProject = (e) => {
