@@ -19,7 +19,6 @@ class Controller {
         this.projectList.push(new Project(name));
         this.ui.displayProjectList(this.projectList);
         localStorage.setItem('projectList', JSON.stringify(this.projectList));
-        UI.closeProjectPopUp();
     }
 
     setSelectedProject = (e) => {
@@ -44,12 +43,22 @@ class Controller {
 
     //Task logic
     createTask = (e) => {
-        e.preventDefault();
         const title = document.getElementById('title').value;
         const description = document.getElementById('description').value;
         const dueDate = document.getElementById('due').value;
         const priority = document.getElementById('priority').value; 
-        const task = new Task(title, description, dueDate, priority, false);
+        const completed = document.getElementById('completed');
+        let isTaskComplete;
+        if (completed.checked){
+            console.log("checked");
+            isTaskComplete = true;
+
+        }
+        else{
+            console.log("unchecked");
+            isTaskComplete = false;
+        }
+        const task = new Task(title, description, dueDate, priority, isTaskComplete);
         this.selectedProject.addTask(task);
         localStorage.setItem('selectedProject', JSON.stringify(this.selectedProject));
         localStorage.setItem('projectList', JSON.stringify(this.projectList));

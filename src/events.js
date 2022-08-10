@@ -6,6 +6,8 @@ class Events{
         this.controller = controller;
     }
 
+    //black below is used for initializing static html elements. Called when app is run
+
     init(){
         const newTaskButtonList = document.querySelectorAll('.new-task-button');
         newTaskButtonList.forEach(newTaskButton => {
@@ -33,6 +35,8 @@ class Events{
         });
         
     }
+
+    //block below is used to init buttons / features on elements created dynamically with JS
 
     initTask(taskDiv){
         taskDiv.querySelector('.remove-task').addEventListener('click', this.controller.deleteTask);

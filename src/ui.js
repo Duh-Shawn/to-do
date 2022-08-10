@@ -17,11 +17,19 @@ class UI {
     displayTaskInfo = (task, project) => {
         document.querySelector('.bg-modal').style.display = 'flex';
         const taskInfoPopup = document.querySelector('.task-info-popup');
-        taskInfoPopup.innerHTML = `<div class="close-info-popup">+</div><div class="task-info"><div class="task-info-title">
+        taskInfoPopup.innerHTML = `<div class="close-info-popup">+</div><div class="task-info">
+        
+    <div class="task-info-title">
         <span>Title: </span> <span>${task.title}</span>
     </div>
     <div class="task-info-project">
         <span>Project: </span> <span>${project.name}</span>
+    </div>
+    <div class="task-info-completion">
+        <span>Completed: </span> <span>${task.isCompleted}</span>
+    </div>
+    <div class="task-info-priority">
+        <span>Priority: </span> <span>${task.priority}</span>
     </div>
     <div class="task-info-date">
         <span>Due Date: </span> <span>${task.dueDate}</span>
