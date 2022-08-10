@@ -15,6 +15,27 @@ class Task {
         this.isCompleted = false; 
     }
 
+    setTitle (title) {
+        this.title = title;
+    }
+
+    setDescription (description) {
+        this.description = description;
+    }
+
+    setDueDate (dueDate) {
+        this.dueDate = dueDate;
+    }
+
+    setPriority (priority) {
+        this.priority = priority;
+    }
+
+    setCompletedStatus (completed) {
+        this.isCompleted = completed;
+    }
+
+
 }
 
 export { Task }

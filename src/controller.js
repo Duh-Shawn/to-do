@@ -10,8 +10,6 @@ class Controller {
         this.ui = new UI(this);
     }
 
-    
-
     //Project logic
     createProject = (e) => {
         e.preventDefault();
@@ -32,7 +30,7 @@ class Controller {
         this.projectList.splice(index, 1);
         localStorage.setItem('projectList', JSON.stringify(this.projectList));
     }
-
+ 
     deleteProject = (e) => {
         const projectIndex = e.target.parentNode.dataset.indexNumber;
         if(this.projectList[projectIndex] === this.selectedProject) this.ui.contentDeletedDisplay();
@@ -50,12 +48,10 @@ class Controller {
         const completed = document.getElementById('completed');
         let isTaskComplete;
         if (completed.checked){
-            console.log("checked");
             isTaskComplete = true;
 
         }
         else{
-            console.log("unchecked");
             isTaskComplete = false;
         }
         const task = new Task(title, description, dueDate, priority, isTaskComplete);
@@ -93,6 +89,31 @@ class Controller {
         const taskIndex = e.target.parentNode.parentNode.dataset.indexNumber;
         const task = this.selectedProject.taskList[taskIndex];
         this.ui.displayTaskInfo(task, this.selectedProject);
+    }
+
+    viewEditTask = (e) => {
+        const taskIndex = e.target.parentNode.parentNode.dataset.indexNumber;
+        const task = this.selectedProject.taskList[taskIndex];
+        this.ui.displayEditTaskPopup(task);
+    }
+
+    editTask = (e, task) => {
+        e.preventDefault();
+        const title = document.querySelector('#edit-task-form #title').value;
+        const description = document.querySelector('#edit-task-form #description').value;
+        const dueDate = document.querySelector('#edit-task-form #due').value;
+        const priority = document.querySelector('#edit-task-form #priority').value;
+        const completed = document.querySelector('#edit-task-form #completed').checked;
+        
+        task.setTitle(title);
+        task.setDescription(description);
+        task.setDueDate(dueDate);
+        task.setPriority(priority);
+        task.setCompletedStatus(completed);
+
+        localStorage.setItem('selectedProject', JSON.stringify(this.selectedProject));
+        localStorage.setItem('projectList', JSON.stringify(this.projectList));
+        this.ui.displayProjectTasks(this.selectedProject); 
     }
 
 

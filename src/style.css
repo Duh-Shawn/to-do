@@ -71,7 +71,8 @@ header{
 }
 
 .new-task-popup,
-.new-project-popup{
+.new-project-popup,
+.edit-task-popup{
     display: none;
     flex-direction: column;
     max-width: 500px;
@@ -117,14 +118,9 @@ header{
     flex-wrap: wrap;
 }
 
-#new-task-form{
-    flex: 1;
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-}
-
-#new-project-form{
+#new-task-form,
+#new-project-form,
+#edit-task-form{
     flex: 1;
     display: flex;
     flex-direction: column;

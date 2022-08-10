@@ -18,6 +18,23 @@ class UI {
     };
 
 
+    displayEditTaskPopup = (task) => {
+        document.querySelector('.bg-modal').style.display = 'flex';
+        document.querySelector('.edit-task-popup').style.display = 'flex';
+        document.querySelector('#edit-task-form #title').value = task.title;
+        document.querySelector('#edit-task-form #description').value = task.description;
+        document.querySelector('#edit-task-form #due').value = task.dueDate;
+        document.querySelector('#edit-task-form #priority').value = task.priority;
+        if (task.isCompleted){
+            document.querySelector('#edit-task-form #completed').checked = true;
+        }
+        else{
+            document.querySelector('#edit-task-form #completed').checked = false;
+        }
+
+        this.events.initTaskEdit(document.querySelector('#edit-task-form #edit-form-submission'), task); //attach event listener for submitting an edit on a task
+        
+    }
 
     displayTaskInfo = (task, project) => {
         document.querySelector('.bg-modal').style.display = 'flex';
@@ -106,6 +123,11 @@ class UI {
     static closeForm = (e) => {
         document.querySelector('.bg-modal').style.display = 'none';
         e.target.parentNode.style.display = 'none';
+    }
+
+    static closeEditPopUp = () => {
+        document.querySelector('.bg-modal').style.display = 'none';
+        document.querySelector('.edit-task-popup').style.display = 'none';
     }
 
     static closeTaskPopUp = (e) => {

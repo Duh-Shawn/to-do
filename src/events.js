@@ -33,7 +33,6 @@ class Events{
             this.controller.createProject(e);
             UI.closeProjectPopUp();
         });
-        
     }
 
     //block below is used to init buttons / features on elements created dynamically with JS
@@ -42,6 +41,7 @@ class Events{
         taskDiv.querySelector('.remove-task').addEventListener('click', this.controller.deleteTask);
         taskDiv.querySelector('.task-completed-checkbox').addEventListener('click', this.controller.markTaskCompleted);
         taskDiv.querySelector('.task-info-icon').addEventListener('click', this.controller.viewTaskInfo);
+        taskDiv.querySelector('.task-edit-icon').addEventListener('click', this.controller.viewEditTask);
     }
 
     initProject(projectDiv){
@@ -50,6 +50,15 @@ class Events{
     }
     initCloseInfoPopupButton(taskInfoPopup){
         taskInfoPopup.querySelector('.close-info-popup').addEventListener('click', UI.closeTaskInfo);
+    }
+
+    //listener waits for edit submission, passes the callback and task back to the controller
+    initTaskEdit(editButton, task){
+        editButton.addEventListener('click', (e) => {
+            this.controller.editTask(e, task);
+            UI.closeEditPopUp();
+        });
+        
     }
 
 }
