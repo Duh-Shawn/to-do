@@ -30,12 +30,17 @@ class Events{
 
     initTask(taskDiv){
         taskDiv.querySelector('.remove-task').addEventListener('click', this.controller.deleteTask);
-        taskDiv.querySelector('.task-left').querySelector('.task-completed-checkbox').addEventListener('click', this.controller.markTaskCompleted);
+        taskDiv.querySelector('.task-completed-checkbox').addEventListener('click', this.controller.markTaskCompleted);
+        taskDiv.querySelector('.task-info-icon').addEventListener('click', this.controller.viewTaskInfo);
     }
 
     initProject(projectDiv){
         projectDiv.querySelector('.remove-project').addEventListener('click', this.controller.deleteProject);
         projectDiv.querySelector('.project-name').addEventListener('click', this.controller.setSelectedProject);
+    }
+    initCloseInfoPopupButton(taskInfoPopup){
+        console.log(taskInfoPopup);
+        taskInfoPopup.querySelector('.close-info-popup').addEventListener('click', UI.closeTaskInfo);
     }
 
 }

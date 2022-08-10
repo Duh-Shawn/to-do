@@ -79,6 +79,13 @@ class Controller {
     }
 
 
+    viewTaskInfo = (e) => {
+        const taskIndex = e.target.parentNode.parentNode.dataset.indexNumber;
+        const task = this.selectedProject.taskList[taskIndex];
+        this.ui.displayTaskInfo(task, this.selectedProject);
+    }
+
+
 }
 
 export { Controller };
