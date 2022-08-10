@@ -27,7 +27,7 @@ class UI {
         <span>Due Date: </span> <span>${task.dueDate}</span>
     </div>
     <div class="task-info-details">
-        <span>Description: </span> <span>${task.description}</span>
+        <span>Description: </span> <span class="task-info-description">${task.description}</span>
     </div></div>`;
         document.querySelector('.bg-modal').appendChild(taskInfoPopup);
         taskInfoPopup.style.display = 'block';

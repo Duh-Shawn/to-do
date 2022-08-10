@@ -108,6 +108,15 @@ header{
     cursor: pointer;
 }
 
+.task-info-details{
+    display: flex;
+}
+
+.task-info-description{
+    flex: 1;
+    flex-wrap: wrap;
+}
+
 #new-task-form{
     flex: 1;
     display: flex;
