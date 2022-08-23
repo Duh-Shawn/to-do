@@ -56,6 +56,7 @@ class Events{
     //listener waits for edit submission, passes the callback and task back to the controller
     initTaskEdit(editButton, task){
         editButton.addEventListener('click', (e) => {
+            console.log(task);
             this.controller.editTask(e, task);
             UI.closeEditPopUp(e);
         });

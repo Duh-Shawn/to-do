@@ -46,7 +46,6 @@ class Controller {
     }
 
     editProject = (e, project) => {
-        e.preventDefault();
         const name = document.querySelector('#edit-project-form #name').value;
         project.setName(name);
         localStorage.setItem('projectList', JSON.stringify(this.projectList));
@@ -107,12 +106,13 @@ class Controller {
 
     viewEditTask = (e) => {
         const taskIndex = e.target.parentNode.parentNode.dataset.indexNumber;
+        console.log(taskIndex);
         const task = this.selectedProject.taskList[taskIndex];
+        console.log(task);
         this.ui.displayEditTaskPopup(task);
     }
 
     editTask = (e, task) => {
-        e.preventDefault();
         const title = document.querySelector('#edit-task-form #title').value;
         const description = document.querySelector('#edit-task-form #description').value;
         const dueDate = document.querySelector('#edit-task-form #due').value;
