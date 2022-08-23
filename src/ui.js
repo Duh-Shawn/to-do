@@ -17,6 +17,14 @@ class UI {
         return temp.innerHTML;
     };
 
+    displayEditProjectPopup = (project) => {
+        document.querySelector('.bg-modal').style.display = 'flex';
+        document.querySelector('.edit-project-popup').style.display = 'flex';
+        document.querySelector('#edit-project-form #name').value = project.name;
+
+        this.events.initProjectEdit(document.querySelector('#edit-project-submission'), project); //attach event listener for submitting an edit on a task
+        
+    }
 
     displayEditTaskPopup = (task) => {
         document.querySelector('.bg-modal').style.display = 'flex';
@@ -32,7 +40,7 @@ class UI {
             document.querySelector('#edit-task-form #completed').checked = false;
         }
 
-        this.events.initTaskEdit(document.querySelector('#edit-task-form #edit-form-submission'), task); //attach event listener for submitting an edit on a task
+        this.events.initTaskEdit(document.querySelector('#edit-form-submission'), task); //attach event listener for submitting an edit on a task
         
     }
 
@@ -71,8 +79,8 @@ class UI {
             const projectDiv = document.createElement('div');
             projectDiv.classList = "project";
             projectDiv.dataset.indexNumber = i;
-            projectDiv.innerHTML=`<p class="project-name">${this.sanitizeHTML(projectList[i].name)}</p><div class="remove-project">+</div>`
-            
+            projectDiv.innerHTML=`<p class="project-name">${this.sanitizeHTML(projectList[i].name)}</p><div class=project-buttons><img class="project-edit-icon"><div class="remove-project">+</div></div>`
+            projectDiv.querySelector('.project-edit-icon').src = edit;
             this.events.initProject(projectDiv); //attach events to project
             document.querySelector('.projects-container').appendChild(projectDiv);
         }
@@ -101,10 +109,8 @@ class UI {
             taskDiv.classList = "task";
             taskDiv.dataset.indexNumber = i;
             taskDiv.innerHTML=`<div class="task-left"><input class="task-completed-checkbox" type="checkbox"><p class="task-title">${this.sanitizeHTML(task.title)}</p></div><div class="task-right"><p class="task-due">${this.sanitizeHTML(task.dueDate)}</p><img class="task-info-icon"><img class="task-edit-icon"><div class="remove-task">+</div></div>`;
-            // const editLogo = taskDiv.querySelector('.edit-icon');
             taskDiv.querySelector('.task-info-icon').src = info;
             taskDiv.querySelector('.task-edit-icon').src = edit;
-            // editLogo
             if (task.isCompleted === true){
                 taskDiv.querySelector('.task-left').querySelector('.task-completed-checkbox').checked = true;
             }
@@ -125,9 +131,9 @@ class UI {
         e.target.parentNode.style.display = 'none';
     }
 
-    static closeEditPopUp = () => {
+    static closeEditPopUp = (e) => {
         document.querySelector('.bg-modal').style.display = 'none';
-        document.querySelector('.edit-task-popup').style.display = 'none';
+        e.target.parentNode.parentNode.style.display = 'none';
     }
 
     static closeTaskPopUp = (e) => {
@@ -149,6 +155,8 @@ class UI {
         document.querySelector('.task-info-popup').style.display = 'none';
         document.querySelector('.bg-modal').style.display = 'none';
     }
+
+
 
 }
 

@@ -72,7 +72,8 @@ header{
 
 .new-task-popup,
 .new-project-popup,
-.edit-task-popup{
+.edit-task-popup,
+.edit-project-popup{
     display: none;
     flex-direction: column;
     max-width: 500px;
@@ -144,7 +145,8 @@ header{
 }
 
 .task-left,
-.task-right{
+.task-right,
+.project-buttons{
     display: flex;
     align-items: center;
     gap: 15px;
@@ -153,8 +155,8 @@ header{
 .project{
     display: flex;
     justify-content: space-between;
-    padding-left: 25px;
-    padding-right: 25px;
+    padding-left: 5px;
+    padding-right: 5px;
     align-items: center;
 }
 

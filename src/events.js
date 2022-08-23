@@ -47,6 +47,7 @@ class Events{
     initProject(projectDiv){
         projectDiv.querySelector('.remove-project').addEventListener('click', this.controller.deleteProject);
         projectDiv.querySelector('.project-name').addEventListener('click', this.controller.setSelectedProject);
+        projectDiv.querySelector('.project-edit-icon').addEventListener('click', this.controller.viewEditProject);
     }
     initCloseInfoPopupButton(taskInfoPopup){
         taskInfoPopup.querySelector('.close-info-popup').addEventListener('click', UI.closeTaskInfo);
@@ -56,7 +57,15 @@ class Events{
     initTaskEdit(editButton, task){
         editButton.addEventListener('click', (e) => {
             this.controller.editTask(e, task);
-            UI.closeEditPopUp();
+            UI.closeEditPopUp(e);
+        });
+        
+    }
+
+    initProjectEdit(editButton, project){
+        editButton.addEventListener('click', (e) => {
+            this.controller.editProject(e, project);
+            UI.closeEditPopUp(e);
         });
         
     }

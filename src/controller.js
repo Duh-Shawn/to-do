@@ -28,15 +28,29 @@ class Controller {
 
     removeProjectFromList = (index) => {
         this.projectList.splice(index, 1);
-        localStorage.setItem('projectList', JSON.stringify(this.projectList));
     }
  
     deleteProject = (e) => {
-        const projectIndex = e.target.parentNode.dataset.indexNumber;
+        const projectIndex = e.target.parentNode.parentNode.dataset.indexNumber;
         if(this.projectList[projectIndex] === this.selectedProject) this.ui.contentDeletedDisplay();
         this.removeProjectFromList(projectIndex);
         this.ui.displayProjectList(this.projectList);
+        localStorage.setItem('selectedProject', JSON.stringify(this.selectedProject));
         localStorage.setItem('projectList', JSON.stringify(this.projectList));
+    }
+
+    viewEditProject = (e) => {
+        const projectIndex = e.target.parentNode.parentNode.dataset.indexNumber;
+        const project = this.projectList[projectIndex];
+        this.ui.displayEditProjectPopup(project);
+    }
+
+    editProject = (e, project) => {
+        e.preventDefault();
+        const name = document.querySelector('#edit-project-form #name').value;
+        project.setName(name);
+        localStorage.setItem('projectList', JSON.stringify(this.projectList));
+        this.ui.displayProjectList(this.projectList);
     }
 
     //Task logic

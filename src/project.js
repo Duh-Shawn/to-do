@@ -21,6 +21,10 @@ class Project{
         this.taskList.splice(index, 1);
     }
 
+    setName(name) {
+        this.name = name;
+    }
+
 }
 
 export { Project }
